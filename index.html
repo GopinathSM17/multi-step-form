@@ -76,7 +76,7 @@
               Please provide your name, email address and phone number
             </p>
           </div>
-          <!-- form present inside the personal info i.e step 1 -->
+          <!-- form present inside the personal info i.e step 1 form -->
           <div class="form-content flex flex-col gap-[40px]">
             <form class="flex flex-col gap-5">
               <div class="name-group flex flex-col gap-1">
@@ -128,7 +128,7 @@
         </div>
 
         <!-- this is the personal info div i.e. step2 -->
-        <div class="select-your-plan flex-col gap-10">
+        <div class="hidden select-your-plan flex-col gap-10">
           <div class="header flex flex-col gap-2">
             <h1 class="text-[var(--marineblue)] text-2xl font-bold">
               Select your plan
@@ -221,8 +221,87 @@
         </div>
 
         <!-- this below code is for step 3 -->
-         <div class=""></div>
+        <div class="hidden pick-add-ons-step-page flex-col gap-10">
+          <!-- header for step 3 -->
+          <div class="header flex flex-col gap-2">
+            <h1 class="text-[var(--marineblue)] text-2xl font-bold">
+              Pick add-ons
+            </h1>
+            <p class="text-[var(--coolgray)] text-[12px]">
+              Add-ons help enhance your gaming experience 
+            </p>
+          </div>
+          <!-- inner layout for step 3 -->
+          <div class="layout flex flex-col pt-[40px] ">
+            <!-- the 3 options for step 3  -->
+            <div class="options-container flex flex-col gap-6 ">
+              <label class="online-services flex flex-row h-[80px] border-[var(--lightgray)] p-4 border-1 rounded-lg ">
+                <input type="checkbox" class="step3-checkbox ">
+                <div class="text-div flex flex-col pl-4 ">
+                  <h3 class="text-[var(--marineblue)] text-[16px] font-bold">Online Service</h3>
+                  <p class="text-[var(--coolgray)] text-[14px]">Access to multiplayer games</p>
+                </div>
+                <div class="flex prices text-[var(--purplishblue)] text-[14px] pl-[105px] items-center">
+                  +$1/mo
+                </div>
+              </label>
+              <label class="online-services flex flex-row h-[80px] border-[var(--lightgray)] p-4 border-1 rounded-lg ">
+                <input type="checkbox" class="step3-checkbox ">
+                <div class="text-div flex flex-col pl-4 ">
+                  <h3 class="text-[var(--marineblue)] text-[16px] font-bold">Larger storage</h3>
+                  <p class="text-[var(--coolgray)] text-[14px]">Extra 1TB of cloud save</p>
+                </div>
+                <div class="flex prices text-[var(--purplishblue)] text-[14px] pl-[140px] items-center">
+                  +$2/mo
+                </div>
+              </label>
+              <label class="online-services flex flex-row h-[80px] border-[var(--lightgray)] p-4 border-1 rounded-lg ">
+                <input type="checkbox" class="step3-checkbox ">
+                <div class="text-div flex flex-col pl-4 ">
+                  <h3 class="text-[var(--marineblue)] text-[16px] font-bold">Customizable profile</h3>
+                  <p class="text-[var(--coolgray)] text-[14px]">Custom theme on your profile</p>
+                </div>
+                <div class="flex prices text-[var(--purplishblue)] text-[14px] pl-[100px] items-center">
+                  +$2/mo
+                </div>
+              </label>
+            </div>
+          </div>
+          <!-- this back and next btn in the step 3 -->
+          <div class="btn-div flex justify-between pt-[40px] h-[80px]">
+            <button
+              id="next-step"
+              class="flex bg-[var(--white)] rounded-lg text-[var(--coolgray)] w-[100px] justify-center items-center"
+            >
+              Go Back
+            </button>
+            <button
+              id="next-step"
+              class="flex bg-[var(--marineblue)] rounded-lg text-[white] w-[100px] justify-center items-center"
+            >
+              Next Step
+            </button>
+          </div>
       </div>
+      <!-- this below code is for step 4 -->
+       <div class="flex finishing-up-step-4  flex-col ">
+        <div class="header flex flex-col gap-2">
+          <h1 class="text-[var(--marineblue)] text-2xl font-bold">
+            Finishing up
+          </h1>
+          <p class="text-[var(--coolgray)] text-[12px]">
+            Double-check everything looks OK before confirming 
+          </p>
+        </div>
+       </div>
+        <!-- this below code is for step 5 final step -->
+         <div class="hidden final-step flex-col items-center justify-center h-[100%]  gap-5">
+          <div class="img-container ">
+            <img src="/images/tick-icon.svg" alt="tick button">
+          </div>
+          <h1 class="text-[var(--marineblue)] text-[30px] font-bold" >Thank you!</h1>
+          <p class="text-center text-[var(--coolgray)] w-[90%]">Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com </p>
+         </div>
     </div>
   </body>
 </html>
