@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Document</title>
+  </head>
+  <body
+    class="bg-[var(--lightgray)] flex justify-center w-screen m-auto h-[90vh]"
+  >
+    <!-- This is the main container  -->
+    <div
+      class="mian-container flex bg-[var(--white)] mt-[10%] mb-[10%] ml-[10%] mr-[10%] w-[100%] h-[90%] pt-[10px] p-[10px] rounded-lg"
+    >
+      <!-- This is the left static box -->
+      <div
+        class="left-box bg-[url('/bg.svg')] h-full w-[35%] flex flex-col gap-y-[20px] rounded-lg p-[5%]"
+      >
+        <div class="step1 flex gap-x-[10px]">
+          <div
+            class="step-number flex rounded-full border-b-white border-0 text-[black] bg-[lightBlue] w-[33px] h-[33px] justify-center p-[4px]"
+          >
+            1
+          </div>
+          <div class="content flex flex-col">
+            <p class="text-[10px] text-[lightGray]">STEP 1</p>
+            <p class="text-[16px] text-[white] font-bold">YOUR INFO</p>
+          </div>
+        </div>
+        <div class="step2 flex gap-x-[10px]">
+          <div
+            class="step-number flex rounded-full border-b-white border-1 text-[white] w-[33px] h-[33px] justify-center p-[4px]"
+          >
+            2
+          </div>
+          <div class="content flex flex-col">
+            <p class="text-[10px] text-[lightGray]">STEP 2</p>
+            <p class="text-[16px] text-[white] font-bold">SELECT PLAN</p>
+          </div>
+        </div>
+        <div class="step3 flex gap-x-[10px]">
+          <div
+            class="step-number flex rounded-full border-b-white border-1 text-[white] w-[33px] h-[33px] justify-center p-[4px]"
+          >
+            3
+          </div>
+          <div class="content flex flex-col">
+            <p class="text-[10px] text-[lightGray]">STEP 3</p>
+            <p class="text-[16px] text-[white] font-bold">ADD-ONS</p>
+          </div>
+        </div>
+        <div class="step4 flex gap-x-[10px]">
+          <div
+            class="step-number flex rounded-full border-b-white border-1 text-[white] w-[33px] h-[33px] justify-center p-[4px]"
+          >
+            4
+          </div>
+          <div class="content flex flex-col">
+            <p class="text-[10px] text-[lightGray]">STEP 4</p>
+            <p class="text-[16px] text-[white] font-bold">SUMMARY</p>
+          </div>
+        </div>
+      </div>
+      <!-- This is the right dynamic box  -->
+      <div class="rightBox flex flex-col w-[65%] py-10 px-10">
+        <!-- This div should be display none for the specific step performed -->
+        <!-- this is the personal info div i.e. step1 -->
+        <div class="hidden personal-info flex-col gap-10">
+          <div class="header flex flex-col gap-2">
+            <h1 class="text-[var(--marineblue)] text-2xl font-bold">
+              Personal info
+            </h1>
+            <p class="text-[var(--coolgray)] text-[12px]">
+              Please provide your name, email address and phone number
+            </p>
+          </div>
+          <!-- form present inside the personal info i.e step 1 -->
+          <div class="form-content flex flex-col gap-[40px]">
+            <form class="flex flex-col gap-5">
+              <div class="name-group flex flex-col gap-1">
+                <label for="name" class="text-[var(--marineblue)] text-[16px]"
+                  >Name</label
+                >
+                <input
+                  class="text-[var(--coolgray)] border-[var(--lightgray)] border-1 h-[40px] rounded-lg pl-[10px]"
+                  type="text"
+                  id="name"
+                  placeholder="e.g. Stepen King"
+                  required
+                />
+              </div>
+              <div class="email-group flex flex-col gap-1">
+                <label for="email" class="text-[var(--marineblue)] text-[16px]"
+                  >Email Address</label
+                >
+                <input
+                  type="text"
+                  class="text-[var(--coolgray)] border-[var(--lightgray)] border-1 h-[40px] rounded-lg pl-[10px]"
+                  id="name"
+                  placeholder="e.g. stepenking123@lorem.com"
+                  required
+                />
+              </div>
+              <div class="phone-group flex flex-col gap-1">
+                <label for="phone" class="text-[var(--marineblue)] text-[16px]"
+                  >Phone Number</label
+                >
+                <input
+                  class="text-[var(--coolgray)] border-[var(--lightgray)] border-1 h-[40px] rounded-lg pl-[10px]"
+                  type="text"
+                  id="phone"
+                  placeholder="e.g. +1 234 567 890"
+                  required
+                />
+              </div>
+            </form>
+            <div class="btn-div flex justify-end h-[40px]">
+              <button
+                id="next-step"
+                class="flex bg-[var(--marineblue)] rounded-lg text-[white] w-[100px] justify-center items-center"
+              >
+                Next Step
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- this is the personal info div i.e. step2 -->
+        <div class="select-your-plan flex-col gap-10">
+          <div class="header flex flex-col gap-2">
+            <h1 class="text-[var(--marineblue)] text-2xl font-bold">
+              Select your plan
+            </h1>
+            <p class="text-[var(--coolgray)] text-[12px]">
+              You have the option of monthly or yearly billing
+            </p>
+          </div>
+
+          <!-- all three radio container -->
+          <div class="radio-container flex gap-7 pt-[40px]">
+            <!-- arcade radio container -->
+            <label
+              for="arcade"
+              class="w-[150px] h-[180px] border-[var(--lightgray)] flex flex-col pt-4 pl-3 border-1 rounded"
+            >
+              <input type="radio" id="arcade" name="radio-btn" class="hidden" />
+              <div class="arcade-content flex flex-col gap-[50px]">
+                <div class="img-container flex h-[40px]">
+                  <img src="/images/icon-arcade.svg" alt="arcade-icon" />
+                </div>
+
+                <div class="content flex flex-col">
+                  <h3 class="text-[var(--marineblue)]">Arcade</h3>
+                  <p class="text-[var(--coolgray)]">$9/mo</p>
+                </div>
+              </div>
+            </label>
+            <!-- advanced radio container -->
+            <label
+              for="advanced"
+              class="w-[150px] h-[180px] border-[var(--lightgray)] flex flex-col pt-4 pl-3 border-1 rounded"
+            >
+              <input
+                type="radio"
+                id="advanced"
+                name="radio-btn"
+                class="hidden"
+              />
+              <div class="advanced-content flex flex-col gap-[50px]">
+                <div class="img-container flex h-[40px]">
+                  <img src="/images/icon-advanced.svg" alt="advanced-icon" />
+                </div>
+                <div class="content flex flex-col">
+                  <h3 class="text-[var(--marineblue)]">Advanced</h3>
+                  <p class="text-[var(--coolgray)]">$12/mo</p>
+                </div>
+              </div>
+            </label>
+            <!-- pro radio container  -->
+            <label
+              for="pro"
+              class="w-[150px] h-[180px] border-[var(--lightgray)] flex flex-col pt-4 pl-3 border-1 rounded"
+            >
+              <input type="radio" id="pro" name="radio-btn" class="hidden" />
+              <div class="pro-content flex flex-col gap-[50px]">
+                <div class="img-container flex h-[40px]">
+                  <img src="/images/icon-pro.svg" alt="pro-icon" />
+                </div>
+                <div class="content flex flex-col">
+                  <h3 class="text-[var(--marineblue)]">Pro</h3>
+                  <p class="text-[var(--coolgray)]">$15/mo</p>
+                </div>
+              </div>
+            </label>
+          </div>
+          <div class="flex flex-col justify-between h-[200px] pt-5">
+            <div
+              class="monthlt-yearly-container gap-7 text-[var(--coolgray)] justify-center flex"
+            >
+              <p>Monthly</p>
+              <input type="radio" />
+              <p>Yearly</p>
+            </div>
+            <div class="btn-div flex justify-between h-[40px]">
+              <button
+                id="next-step"
+                class="flex bg-[var(--white)] rounded-lg text-[var(--coolgray)] w-[100px] justify-center items-center"
+              >
+                Go Back
+              </button>
+              <button
+                id="next-step"
+                class="flex bg-[var(--marineblue)] rounded-lg text-[white] w-[100px] justify-center items-center"
+              >
+                Next Step
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- this below code is for step 3 -->
+         <div class=""></div>
+      </div>
+    </div>
+  </body>
+</html>
