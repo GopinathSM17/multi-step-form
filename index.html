@@ -16,7 +16,7 @@
     >
       <!-- This is the left static box -->
       <div
-        class="left-box bg-[url('/bg.svg')] h-full w-[35%] flex flex-col gap-y-[20px] rounded-lg p-[5%]"
+        class="left-box bg-[url('/bg.svg')] bg-no-repeat bg-center h-full w-[35%] flex flex-col gap-y-[20px] rounded-lg p-[5%]"
       >
         <div class="step1 flex gap-x-[10px]">
           <div
@@ -67,7 +67,7 @@
       <div class="rightBox flex flex-col w-[65%] py-10 px-10">
         <!-- This div should be display none for the specific step performed -->
         <!-- this is the personal info div i.e. step1 -->
-        <div class="hidden personal-info flex-col gap-10">
+        <div class="flex personal-info flex-col gap-10">
           <div class="header flex flex-col gap-2">
             <h1 class="text-[var(--marineblue)] text-2xl font-bold">
               Personal info
@@ -282,16 +282,72 @@
               Next Step
             </button>
           </div>
-      </div>
-      <!-- this below code is for step 4 -->
-       <div class="flex finishing-up-step-4  flex-col ">
-        <div class="header flex flex-col gap-2">
+       </div>
+       <!-- this below code is for step 4 -->
+       <div class="hidden finishing-up-step-4 flex-col h-[100%]  ">
+        <div class="header flex flex-col gap-2 pb-[5%]">
           <h1 class="text-[var(--marineblue)] text-2xl font-bold">
             Finishing up
           </h1>
           <p class="text-[var(--coolgray)] text-[12px]">
             Double-check everything looks OK before confirming 
           </p>
+        </div>
+        <div class="main-and-add-on-plan flex flex-col w-[100%] h-[45%] p-[5%] bg-gray-100 rounded-lg">
+          <!-- main plan div of step4 -->
+          <div class="main-plan flex flex-row border-b pb-4 justify-between">
+            <div class="plan-type flex flex-col ">
+              <h3 class="text-[var(--marineblue)] font-bold">Arcade (Monthly)</h3>
+              <p class="underline text-[var(--coolgray)]">change</p>
+            </div>
+            <div class="plan-value flex">
+              <p class="text-[var(--marineblue)] font-bold">$9/mo</p>
+            </div>
+          </div>
+          <!-- add-ons div of step 4 page -->
+          <div class="hidden add-on-plans flex-col pt-[5%] gap-3 ">
+
+            <div class="plan-type flex flex-row justify-between">
+              <h3 class="text-[var(--coolgray)]">Online service</h3>
+              <div class="plan-value flex">
+                <p class="text-[var(--marineblue)]">+$1/mo</p>
+              </div>
+            </div>
+
+            <div class="plan-type flex flex-row justify-between">
+              <h3 class="text-[var(--coolgray)]">Larger storage</h3>
+              <div class="plan-value flex">
+                <p class="text-[var(--marineblue)]">+$2/mo</p>
+              </div>
+            </div>
+
+            <div class="plan-type flex flex-row justify-between">
+                <h3 class="text-[var(--coolgray)]">Customizable profile</h3>
+                <div class="plan-value flex">
+                  <p class="text-[var(--marineblue)]">+$2/mo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="total-plan-amount flex flex-row  p-[5%] justify-between">
+          <h3 class="text-[var(--coolgray)] ">Total(per month)</h3>
+          <div class="plan-value flex">
+            <p class="text-[var(--purplishblue)] font-bold">+$14/mo</p>
+          </div>
+        </div>
+        <div class="btn-div flex justify-between  h-[25%] pt-[15%]">
+          <button
+            id="next-step"
+            class="flex bg-[var(--white)] rounded-lg text-[var(--coolgray)] w-[100px] justify-center items-center"
+          >
+            Go Back
+          </button>
+          <button
+            id="next-step"
+            class="flex bg-[var(--marineblue)] rounded-lg text-[white] w-[100px] justify-center items-center"
+          >
+            Confirm
+          </button>
         </div>
        </div>
         <!-- this below code is for step 5 final step -->
