@@ -43,22 +43,51 @@ nextButton[0].addEventListener("click", (e) => {
 
 
 // 2nd page eventListener for next Step button
+let planSelected = 0;
 nextButton[1].addEventListener("click", (e) => {
     e.preventDefault();
-    currPageIterator++;
+
+    const radioContainer =  document.querySelector('.radio-container');
+    console.log(radioContainer);
+    
+    
+
+    radioContainer.addEventListener('click',(e)=>{
+        e.stopPropagation();
+
+        
+        const label = e.target.closest('label');
+        console.log(planSelected);
+
+        e.stopPropagation();
+
+        if(!label){
+            return;
+        }
+        planSelected = 1;
+        console.log(planSelected);
+        
+    })
 
 
-    if (currPageIterator == 3) {
+    if(planSelected === 1){
+        console.log("im here");
+        
+        currPageIterator++;
 
-        // background color change for left step numbers
-        leftBoxStep2.classList.remove("bg-[lightBlue]")
-        leftBoxStep3.classList.add("bg-[lightBlue]")
-
-        // step successfully moves to the next step
-        step2Box.classList.replace("flex", "hidden");
-        step3Box.classList.replace("hidden", "flex");
+        if (currPageIterator == 3) {
+    
+            // background color change for left step numbers
+            leftBoxStep2.classList.remove("bg-[lightBlue]")
+            leftBoxStep3.classList.add("bg-[lightBlue]")
+    
+            // step successfully moves to the next step
+            step2Box.classList.replace("flex", "hidden");
+            step3Box.classList.replace("hidden", "flex");
+        }    
     }
 
+   
 
 
 })
@@ -73,6 +102,9 @@ nextButton[2].addEventListener("click", (e) => {
         leftBoxStep4.classList.add("bg-[lightBlue]")
         step3Box.classList.replace("flex", "hidden");
         step4Box.classList.replace("hidden", "flex");
+        const totalValueDiv  = document.querySelector('.total-plan-amount');
+        const val = totalValueDiv.querySelector('p');
+        val.innerHTML = `$${planValueInNumbers}/yr`;
     }
 });
 
@@ -88,6 +120,8 @@ nextButton[3].addEventListener("click", (e) => {
     }
 });
 
+
+// back button codes
 
 const backButton = document.querySelectorAll("#back-step");
 
@@ -109,7 +143,9 @@ backButton[1].addEventListener("click", (event) => {
         leftBoxStep2.classList.add("bg-[lightBlue]")
         step3Box.classList.replace("flex", "hidden");
         step2Box.classList.replace("hidden", "flex");
+
     }
+    planValueInNumbers =0;
     currPageIterator--;
 });
 
@@ -120,6 +156,27 @@ backButton[2].addEventListener("click", (event) => {
         leftBoxStep3.classList.add("bg-[lightBlue]")
         step4Box.classList.replace("flex", "hidden");
         step3Box.classList.replace("hidden", "flex");
+
+        // clearing the add ons
+        existingPlan = [];
+        // clear it in add-ons
+        const addOnPlans = document.querySelector('.add-on-plans');
+        addOnPlans.innerHTML = "";
+
+        const addOnsOptionContainer = document.querySelector('.options-container')
+
+        const labels = addOnsOptionContainer.querySelectorAll('input');
+
+        labels.forEach(element => {
+            element.checked = false;
+        });
+
+        let mainPlanValue = document.querySelector('.main-plan-value-step-4');
+        mainPlanValue.textContent = planValue;
+
+        const priceContent = mainPlanValue.textContent;
+        const price = parseInt(priceContent.replace(/[^0-9]/g, ""), 10);
+        planValueInNumbers = price;
     }
     currPageIterator--;
 });
@@ -148,7 +205,9 @@ const step1FormValidation = () => {
 }
 
 
+// total value for 4th step
 
+let totalValue = 0;
 
 //step 2 (Select your plan) using checkBox property
 
@@ -210,6 +269,7 @@ toggleButton.addEventListener("change", (e) => {
         monthFree.forEach(element => {
             element.classList.remove("hidden");
         });
+
         changecontent = "monthly";
     }
 
@@ -242,6 +302,8 @@ let planValueInNumbers = 0;
 
 const radioContainer = document.querySelector('.radio-container');
 
+let priceValueArr = [];
+
 radioContainer.addEventListener("click", (e) => {
     // console.log(e.target.closest("label"));
     const selectedPlan = e.target.closest("label");
@@ -255,7 +317,6 @@ radioContainer.addEventListener("click", (e) => {
     planType = selectedPlan.querySelector("h3").textContent;
     planValue = selectedPlan.querySelector("p").textContent;
 
-
     // finishing up page
     let mainPlan = document.querySelector('.main-plan-step-4');
     let mainPlanValue = document.querySelector('.main-plan-value-step-4')
@@ -263,6 +324,17 @@ radioContainer.addEventListener("click", (e) => {
 
     mainPlan.textContent = planType;
     mainPlanValue.textContent = planValue;
+
+    const priceContent = mainPlanValue.textContent;
+    const price = parseInt(priceContent.replace(/[^0-9]/g, ""), 10);
+
+
+    if(!priceValueArr.includes(price)){
+        priceValueArr.push(price);
+        planValueInNumbers += price;
+        planSelected = 1;
+    }
+
 })
 
 // step 3 (add-ons plan) using checkBox property
@@ -318,8 +390,11 @@ addOnsOptionContainer.addEventListener('click', (e) => {
     if (!existingPlan.includes(addOnPlan) ) {
         existingPlan.push(addOnPlan); 
         addOnPlans.appendChild(planDiv);   
+        const val = parseInt(addOnPlanValue.replace(/[^0-9]/g, ""), 10);
+        planValueInNumbers += val; 
     }
 
 })
+
 
 
