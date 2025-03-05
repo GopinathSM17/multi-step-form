@@ -1,4 +1,62 @@
 
+// step 1 form validation
+const nameInput = document.querySelector('.name-input-step1');
+let nameInputSuccess = 0;
+let emailInputSuccess = 0;
+let emailInputValue ;
+let phoneInputSuccess = 0;
+nameInput.addEventListener("input", function (event) {
+    // Allow only letters (A-Z, a-z) and spaces
+    
+    this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+    
+    nameInputSuccess = this.value.length;
+
+    if(nameInputSuccess > 5){
+        const nameRequiredTag = document.querySelector('.name-required-tag');
+        nameRequiredTag.classList.replace('flex', 'hidden');
+        nameRequiredTag.textContent = "";
+    }
+    
+});
+const emailInput = document.querySelector('.email-input-step1');
+emailInput.addEventListener("input", function (event) {
+    // Allow only letters (A-Z, a-z) and spaces
+
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+
+    emailInputValue = this.value;
+
+    emailInputSuccess = this.value.length;
+
+   
+    if(emailPattern.test(emailInputValue)){
+        const emailRequiredTag = document.querySelector('.email-required-tag');
+        emailRequiredTag.classList.replace('flex', 'flex');
+        emailRequiredTag.textContent = "";
+    }
+
+
+});
+const phoneInput = document.querySelector('.phone-input-step1');
+phoneInput.addEventListener("input", function (event) {
+    // Allow only letters (A-Z, a-z) and spaces
+    this.value = this.value.replace(/[^0-9\s]/g, '');
+
+    phoneInputSuccess = this.value.length;
+
+    if(phoneInputSuccess > 5){
+        const phoneRequiredTag = document.querySelector('.phone-required-tag');
+        phoneRequiredTag.classList.replace('flex', 'hidden');
+        phoneRequiredTag.textContent = "";
+    }
+
+});
+
+
+
 // all the right side Box
 const step1Box = document.querySelector('.step-1-box');
 const step2Box = document.querySelector('.step-2-box');
@@ -20,24 +78,58 @@ const nextButton = document.querySelectorAll('.next-step');
 // this let variable is to have 
 let currPageIterator = 1;
 
+
+
 // 1st page eventListener for next Step button
 nextButton[0].addEventListener("click", (e) => {
     e.preventDefault();
-    currPageIterator++;
 
-    if (currPageIterator == 2) {
-        // name , email, phone Number validations
-        const step = step1FormValidation();
-        // background color change for left side stepper number
+    
 
-        // change to next page
-        if (step) {
+    const nameValue = nameInput.value;
+    const emailValue = emailInput.value;
+    const phoneNumberValue =  phoneInput.value;
+
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(nameInputSuccess == 0){
+        const nameRequiredTag = document.querySelector('.name-required-tag');
+        nameRequiredTag.classList.replace('hidden', 'flex');
+        nameRequiredTag.textContent = "Field is required"; 
+    }
+    else if (nameInputSuccess <= 5) {
+        const nameRequiredTag = document.querySelector('.name-required-tag');
+        nameRequiredTag.classList.replace('hidden', 'flex');
+        nameRequiredTag.textContent = "Maximum 5 characters";
+    }
+    else if(emailInputSuccess == 0){
+        const emailRequiredTag = document.querySelector('.email-required-tag');
+        emailRequiredTag.classList.replace('hidden', 'flex');
+        emailRequiredTag.textContent = "Field is required";
+    }
+    else if(!emailPattern.test(emailInputValue)){
+        const emailRequiredTag = document.querySelector('.email-required-tag');
+        emailRequiredTag.classList.replace('hidden', 'flex');
+        emailRequiredTag.textContent = "Invalid Email";
+    }
+    else if( phoneInputSuccess < 10){
+        const phoneRequiredTag = document.querySelector('.phone-required-tag');
+        phoneRequiredTag.classList.replace('hidden', 'flex');
+        phoneRequiredTag.textContent = "Invalid Phone Number";
+    }
+    else {
+        currPageIterator++;
+
+        if (currPageIterator == 2) {
+
+            // background color change for left side stepper number
+
+            // change to next page
             leftBoxStep1.classList.remove("bg-[lightBlue]")
             leftBoxStep2.classList.add("bg-[lightBlue]")
             step1Box.classList.replace("flex", "hidden");
             step2Box.classList.replace("hidden", "flex");
-        }
 
+        }
     }
 })
 
@@ -47,47 +139,48 @@ let planSelected = 0;
 nextButton[1].addEventListener("click", (e) => {
     e.preventDefault();
 
-    const radioContainer =  document.querySelector('.radio-container');
+    const radioContainer = document.querySelector('.radio-container');
     console.log(radioContainer);
-    
-    
 
-    radioContainer.addEventListener('click',(e)=>{
+
+
+    radioContainer.addEventListener('click', (e) => {
         e.stopPropagation();
 
-        
+
         const label = e.target.closest('label');
         console.log(planSelected);
 
-        e.stopPropagation();
 
-        if(!label){
+        if (!label) {
             return;
         }
         planSelected = 1;
         console.log(planSelected);
-        
+
     })
 
 
-    if(planSelected === 1){
+    if (planSelected === 1) {
         console.log("im here");
-        
+
         currPageIterator++;
 
         if (currPageIterator == 3) {
-    
+
             // background color change for left step numbers
             leftBoxStep2.classList.remove("bg-[lightBlue]")
             leftBoxStep3.classList.add("bg-[lightBlue]")
-    
+
             // step successfully moves to the next step
             step2Box.classList.replace("flex", "hidden");
             step3Box.classList.replace("hidden", "flex");
-        }    
+
+
+        }
     }
 
-   
+
 
 
 })
@@ -102,7 +195,7 @@ nextButton[2].addEventListener("click", (e) => {
         leftBoxStep4.classList.add("bg-[lightBlue]")
         step3Box.classList.replace("flex", "hidden");
         step4Box.classList.replace("hidden", "flex");
-        const totalValueDiv  = document.querySelector('.total-plan-amount');
+        const totalValueDiv = document.querySelector('.total-plan-amount');
         const val = totalValueDiv.querySelector('p');
         val.innerHTML = `$${planValueInNumbers}/yr`;
     }
@@ -145,7 +238,7 @@ backButton[1].addEventListener("click", (event) => {
         step2Box.classList.replace("hidden", "flex");
 
     }
-    planValueInNumbers =0;
+    planValueInNumbers = 0;
     currPageIterator--;
 });
 
@@ -180,29 +273,6 @@ backButton[2].addEventListener("click", (event) => {
     }
     currPageIterator--;
 });
-
-
-
-
-// step 1 form validation
-const step1FormValidation = () => {
-    const nameInput = document.querySelector('.name-input-step1');
-    nameInput.addEventListener("input", function (event) {
-        // Allow only letters (A-Z, a-z) and spaces
-        this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
-    });
-    const emailInput = document.querySelector('.email-input-step1');
-    emailInput.addEventListener("input", function (event) {
-        // Allow only letters (A-Z, a-z) and spaces
-        this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
-    });
-    const phoneInput = document.querySelector('.phone-input-step1');
-    phoneInput.addEventListener("input", function (event) {
-        // Allow only letters (A-Z, a-z) and spaces
-        this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
-    });
-    return true;
-}
 
 
 // total value for 4th step
@@ -329,12 +399,11 @@ radioContainer.addEventListener("click", (e) => {
     const price = parseInt(priceContent.replace(/[^0-9]/g, ""), 10);
 
 
-    if(!priceValueArr.includes(price)){
+    if (!priceValueArr.includes(price)) {
         priceValueArr.push(price);
         planValueInNumbers += price;
         planSelected = 1;
     }
-
 })
 
 // step 3 (add-ons plan) using checkBox property
@@ -387,11 +456,11 @@ addOnsOptionContainer.addEventListener('click', (e) => {
 
     console.log(existingPlan);
 
-    if (!existingPlan.includes(addOnPlan) ) {
-        existingPlan.push(addOnPlan); 
-        addOnPlans.appendChild(planDiv);   
+    if (!existingPlan.includes(addOnPlan)) {
+        existingPlan.push(addOnPlan);
+        addOnPlans.appendChild(planDiv);
         const val = parseInt(addOnPlanValue.replace(/[^0-9]/g, ""), 10);
-        planValueInNumbers += val; 
+        planValueInNumbers += val;
     }
 
 })

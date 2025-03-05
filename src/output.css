@@ -1670,6 +1670,9 @@
   .text-\[var\(--purplishblue\)\] {
     color: var(--purplishblue);
   }
+  .text-\[var\(--strawberry\)\] {
+    color: var(--strawberry);
+  }
   .text-\[white\] {
     color: white;
   }

@@ -69,7 +69,7 @@
         <!-- This div should be display none for the specific step performed -->
          
         <!-- this below code is for the personal info div i.e. step1 -->
-        <div class="step-1-box hidden personal-info flex-col gap-10">
+        <div class="step-1-box flex personal-info flex-col gap-10">
           <div class="header flex flex-col gap-2">
             <h1 class="text-[var(--marineblue)] text-2xl font-bold">
               Personal info
@@ -82,9 +82,11 @@
           <div class="form-content flex flex-col gap-[40px]">
             <form class="flex flex-col gap-5">
               <div class="name-group flex flex-col gap-1">
-                <label for="name" class="text-[var(--marineblue)] text-[16px]"
-                  >Name</label
-                >
+                <div class="name-and-required flex justify-between">
+                  <label for="name" class="text-[var(--marineblue)] text-[16px]"
+                  >Name</label>
+                  <p class="name-required-tag hidden text-[10px] font-bold text-[var(--strawberry)] items-center ">This field is required</p>
+                </div>
                 <input
                   class="name-input-step1 text-[var(--coolgray)] border-[var(--lightgray)] border-1 h-[40px] rounded-lg pl-[10px]"
                   type="text"
@@ -94,9 +96,11 @@
                 />
               </div>
               <div class="email-group flex flex-col gap-1">
-                <label for="email" class="text-[var(--marineblue)] text-[16px]"
-                  >Email Address</label
-                >
+                <div class="email-and-required flex justify-between">
+                  <label for="email" class="text-[var(--marineblue)] text-[16px]"
+                  >Email Address</label>
+                  <p class="email-required-tag hidden text-[10px] font-bold text-[var(--strawberry)] items-center ">This field is required</p>
+                </div>
                 <input
                   type="text"
                   class="email-input-step1 text-[var(--coolgray)] border-[var(--lightgray)] border-1 h-[40px] rounded-lg pl-[10px]"
@@ -106,9 +110,11 @@
                 />
               </div>
               <div class="phone-group flex flex-col gap-1">
-                <label for="phone" class="text-[var(--marineblue)] text-[16px]"
-                  >Phone Number</label
-                >
+                <div class="phone-and-required flex justify-between">
+                  <label for="phone" class="text-[var(--marineblue)] text-[16px]"
+                  >Phone Number</label>
+                  <p class="phone-required-tag hidden text-[10px] font-bold text-[var(--strawberry)] items-center ">This field is required</p>
+                </div>
                 <input
                   class="phone-input-step1 text-[var(--coolgray)] border-[var(--lightgray)] border-1 h-[40px] rounded-lg pl-[10px]"
                   type="text"
@@ -130,7 +136,7 @@
         </div>
 
         <!-- this below code is for  the personal info div i.e. step2 -->
-        <div class="step-2-box flex select-your-plan flex-col ">
+        <div class="step-2-box hidden select-your-plan flex-col ">
           <div class="header flex flex-col gap-2">
             <h1 class="text-[var(--marineblue)] text-2xl font-bold">
               Select your plan
